@@ -17,12 +17,14 @@ engine = create_async_engine(
 async_session = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
 
 class DBConnectionHandler:
-    def __init__(self) -> None: # construtor
+    def __init__(self) -> None: # construtor que inicializa a sessão com o banco de dados
         self.session: Optional[AsyncSession] = None
 
+    # cria uma nova sessão    
     async def __aenter__(self):
-        self.session = async_session() # cria uma nova sessão
+        self.session = async_session()
         return self
-
+    
+    # fecha a sessão com o banco de dados
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         await self.session.close()
