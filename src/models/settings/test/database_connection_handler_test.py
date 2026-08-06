@@ -1,9 +1,9 @@
 import pytest
-from .database_connection_handler import DBConnectionHandler
+from ..database_connection_handler import DBConnectionHandler
 
 # Teste unitário
 @pytest.mark.asyncio
-@pytest.mark.asyncio(reason="Connecting to the database") # -> Pula o teste 
+@pytest.mark.skip(reason="Connecting to the database") # -> Pula o teste 
 async def test_database_connection():
     async with DBConnectionHandler() as db_handler:
         print(db_handler.session)
