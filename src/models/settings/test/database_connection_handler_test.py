@@ -1,5 +1,5 @@
 import pytest
-from ..database_connection_handler import DBConnectionHandler
+from src.models.settings.database_connection_handler import DBConnectionHandler
 
 # Teste unitário
 @pytest.mark.asyncio

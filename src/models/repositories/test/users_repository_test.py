@@ -1,5 +1,5 @@
 import pytest 
-from ..users_repository import UsersRepository
+from src.models.repositories.users_repository import UsersRepository
 
 @pytest.mark.asyncio
 @pytest.mark.skip(reason="Inserting a user into the database") # -> Pula o teste
