@@ -1,6 +1,8 @@
 import pytest
 from src.controllers.user_register import UserRegister
 
+# Testa se o controller valida os dados e salva no banco corretamente
+
 class UserRepositoryMock:
     def __init__(self):
         self.insert_users_att = {} # método construtor para armazenar os dados de inserção simulados
