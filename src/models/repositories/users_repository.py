@@ -3,6 +3,8 @@ from src.models.settings.database_connection_handler import DBConnectionHandler
 from src.models.entities.users import Users
 from src.models.repositories.interfaces.users_repository import UsersRepositoryInterface
 
+# Conversa diretamente com o banco de dados, cada método faz uma operação SQL.
+
 class UsersRepository(UsersRepositoryInterface):
     async def insert_users(self, user_infos: dict ) -> None:
         async with DBConnectionHandler() as db_connection:
