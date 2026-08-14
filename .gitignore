@@ -4,3 +4,4 @@
 *venv
 .venv*
 schema.db
+.conftest.py

@@ -1,4 +1,5 @@
 from src.models.repositories.interfaces.users_repository import UsersRepositoryInterface
+from src.errors.types.http_bad_request_error import HttpBadRequestError
 from src.controllers.interfaces.user_register import UserRegisterInterface
 
 class UserRegister(UserRegisterInterface):
@@ -15,10 +16,10 @@ class UserRegister(UserRegisterInterface):
         uf = user_data["uf"].upper()
 
         if uf not in ["MG", "BA", "CE", "SC", "MT"]:
-            raise Exception("Estado invalido para cadastro")
+            raise HttpBadRequestError("Estado invalido para cadastro")
 
         if age < 0 or age > 120:
-            raise Exception("Idade invalida para cadastro")
+            raise HttpBadRequestError("Idade invalida para cadastro")
 
     async def __registry_user(self, user_data: dict) -> None:
         await self.users_repository.insert_users(user_data)

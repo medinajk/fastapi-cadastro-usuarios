@@ -13,7 +13,7 @@ async def create_user(body: UserInput):
     http_request = HttpRequest(body=dict(body))
     user_register = user_register_composer()
 
-    http_response = await user_register.handle_create_user(http_request)
+    http_response = await user_register.handle_register_user(http_request)
 
     return JSONResponse(
         content=http_response.body,

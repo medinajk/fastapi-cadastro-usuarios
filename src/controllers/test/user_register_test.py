@@ -1,4 +1,5 @@
 import pytest
+from src.errors.types.http_bad_request_error import HttpBadRequestError
 from src.controllers.user_register import UserRegister
 
 # Testa se o controller valida os dados e salva no banco corretamente
@@ -41,7 +42,7 @@ async def test_register_user_error_uf():
         "uf": "ES"
     }
 
-    with pytest.raises(Exception) as excinfo:
+    with pytest.raises(HttpBadRequestError) as excinfo:
         await user_register.register_user(user_data)
 
     # valida se a mensagem de erro lançada é a esperada
@@ -60,7 +61,7 @@ async def test_register_user_error_uf():
             "uf": "MG"
         }
 
-        with pytest.raises(Exception) as excinfo:
+        with pytest.raises(HttpBadRequestError) as excinfo:
             await user_register.register_user(user_data)
 
         assert str(excinfo.value) == "Idade invalida para cadastro"
